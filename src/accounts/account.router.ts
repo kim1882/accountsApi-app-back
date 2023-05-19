@@ -47,3 +47,19 @@ accountRouter.delete("/:id", async (req: Request, res: Response) => {
     res.status(500).send(e.message);
   }
 });
+
+// POST accounts/:id/transactions
+accountRouter.post("/:id/transactions", async (req: Request, res: Response) => {
+  try {
+    const id: string = req.params.id;
+    const { type, amount } = req.body;
+    const updatedAccount = await AccountService.createTransaction(
+      id,
+      type,
+      amount
+    );
+    res.status(200).send(updatedAccount);
+  } catch (e) {
+    res.status(500).send(e.message);
+  }
+});
