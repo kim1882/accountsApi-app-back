@@ -40,9 +40,14 @@ export const create = async (id: string, name: string): Promise<IAccount> => {
     name,
     transactions: [],
   };
-  console.log(newAccount);
 
   accounts.push(newAccount);
 
   return newAccount;
+};
+
+export const remove = async (id: string): Promise<null | void> => {
+  const newAccounts = accounts.filter((item) => item.id !== id);
+  accounts = newAccounts;
+  return null;
 };

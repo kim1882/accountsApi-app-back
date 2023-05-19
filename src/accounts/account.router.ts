@@ -38,3 +38,12 @@ accountRouter.post("/", async (req: Request, res: Response) => {
 });
 
 // DELETE accounts/:id
+accountRouter.delete("/:id", async (req: Request, res: Response) => {
+  try {
+    const id: string = req.params.id;
+    await AccountService.remove(id);
+    res.sendStatus(204);
+  } catch (e) {
+    res.status(500).send(e.message);
+  }
+});
