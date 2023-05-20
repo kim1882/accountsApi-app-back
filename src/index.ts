@@ -10,6 +10,7 @@ import helmet from "helmet";
 import { accountRouter } from "./accounts/account.router";
 import { errorHandler } from "./middleware/error.middleware";
 import { notFoundHandler } from "./middleware/not-found.middleware";
+import { logTransactionHandler } from "./middleware/logTransaction";
 
 dotenv.config();
 
@@ -32,6 +33,8 @@ const app = express();
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
+
+app.use(logTransactionHandler);
 
 app.use("/api/accounts", accountRouter);
 
