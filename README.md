@@ -1,4 +1,4 @@
-# xepelin-app-back
+# accountsApi-app-back
 
 To run the server, please run: npm run dev, we should see the message "Listening on port 7000"
 
